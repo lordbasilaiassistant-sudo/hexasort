@@ -1,0 +1,33 @@
+{
+  "name": "HexaSort — Hexagon Color Sort Puzzle",
+  "short_name": "HexaSort",
+  "description": "A relaxing hexagon color-sorting puzzle. Drag hex tiles, match the colors on top, and clear stacks of 10. Free, installable, plays offline.",
+  "lang": "en",
+  "categories": ["games", "puzzle", "entertainment"],
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2c2d30",
+  "theme_color": "#2c2d30",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

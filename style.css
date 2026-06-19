@@ -157,8 +157,9 @@ html, body {
 
 .install-fab {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + 64px);
-  right: 14px;
+  top: calc(env(safe-area-inset-top) + 60px);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 8;
   background: #3fb6ff;
   color: #08233a;
@@ -173,8 +174,8 @@ html, body {
   animation: fabpulse 2.4s ease-in-out infinite;
 }
 @keyframes fabpulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.06); }
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.06); }
 }
 
 .ios-tip {

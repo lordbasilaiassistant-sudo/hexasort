@@ -623,6 +623,42 @@
   if ('serviceWorker' in navigator && !isLocal)
     window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 
+  // ---- Install (Add to Home Screen) -----------------------------------
+  (function installUI() {
+    const ovInstall = document.getElementById('ov-install');
+    const fab = document.getElementById('install-fab');
+    const iosTip = document.getElementById('ios-tip');
+    const iosClose = document.getElementById('ios-tip-close');
+    if (!ovInstall || !fab) return;
+
+    const isStandalone = matchMedia('(display-mode: standalone)').matches ||
+      matchMedia('(display-mode: fullscreen)').matches || navigator.standalone === true;
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    let deferred = null;
+
+    function show() { if (isStandalone) return; ovInstall.classList.remove('hidden'); fab.classList.remove('hidden'); }
+    function hide() { ovInstall.classList.add('hidden'); fab.classList.add('hidden'); }
+
+    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferred = e; show(); });
+    window.addEventListener('appinstalled', () => { deferred = null; hide(); iosTip.classList.add('hidden'); });
+
+    function doInstall() {
+      if (deferred) {
+        deferred.prompt();
+        deferred.userChoice.finally(() => { deferred = null; hide(); });
+      } else if (isIOS) {
+        iosTip.classList.toggle('hidden');
+      }
+    }
+    ovInstall.addEventListener('click', doInstall);
+    fab.addEventListener('click', doInstall);
+    if (iosClose) iosClose.addEventListener('click', () => iosTip.classList.add('hidden'));
+
+    // iOS Safari never fires beforeinstallprompt — offer manual instructions
+    if (isIOS && !isStandalone) show();
+  })();
+
   if (location.search.includes('debug')) {
     window.__hexa = {
       get board() { return board; }, get tray() { return tray; }, get anim() { return anim; },

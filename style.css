@@ -143,3 +143,64 @@ html, body {
   transition: transform 0.05s, box-shadow 0.05s;
 }
 .btn:active { transform: translateY(4px); box-shadow: 0 4px 0 #c79b2c; }
+
+.btn.install {
+  display: block;
+  margin: 14px auto 0;
+  background: #3fb6ff;
+  color: #08233a;
+  box-shadow: 0 8px 0 #2c84bd;
+  font-size: 17px;
+  padding: 13px 30px;
+}
+.btn.install:active { box-shadow: 0 4px 0 #2c84bd; }
+
+.install-fab {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 64px);
+  right: 14px;
+  z-index: 8;
+  background: #3fb6ff;
+  color: #08233a;
+  border: none;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  padding: 9px 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  cursor: pointer;
+  animation: fabpulse 2.4s ease-in-out infinite;
+}
+@keyframes fabpulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.ios-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 18px);
+  transform: translateX(-50%);
+  z-index: 11;
+  background: #241338;
+  background: #2b2d32;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  font-size: 14px;
+  padding: 12px 38px 12px 16px;
+  border-radius: 14px;
+  width: min(90vw, 340px);
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+.ios-tip b { color: var(--accent); }
+#ios-tip-close {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 16px;
+}

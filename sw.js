@@ -1,5 +1,5 @@
 /* HexaSort service worker — offline cache so the installed app works without network. */
-const CACHE = 'hexasort-v3';
+const CACHE = 'hexasort-v4';
 const ASSETS = [
   './',
   './index.html',
